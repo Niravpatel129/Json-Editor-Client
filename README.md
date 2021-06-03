@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+### Local Deployment Steps
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Clone and build the npm packages (paste this into a mac or linux terminal)
 
-## Available Scripts
+```
+git clone git@github.com:Niravpatel129/Json-Editor-Client.git
+cd Json-Editor-Client
+npm install
+```
 
-In the project directory, you can run:
+2. Start the project using
 
-### `yarn start`
+```
+nom run start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Summary of the Assignment:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Design and build a JSON editor where they are presented with a JSON data from https://random-data-api.com, It should have the basic functionalities of a json editor with bonus steps to enhance the functionality.
 
-### `yarn test`
+### Approach
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+My approach was to build a recursive render function that would loop through the object and render if the type was not an object, the rest of the features were implemented using the basic react fundamentals of state management for example opening and closing the json tree, or editing a json tree and remembering the edited parts to be stored on a database somewhere.
 
-### `yarn build`
+### What features you implemented
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The app renders a json tree recursively, meaning it will work with any nested json object.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- You can click on any the key and chance the value and the app will remember the change on the state.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- You can toggle the tree via a basic local state for the component
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Type of each value is placed next to the key
