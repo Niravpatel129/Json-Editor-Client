@@ -35,3 +35,7 @@ My approach was to build a recursive render function that would loop through the
 - You can toggle the tree via a basic local state for the component
 
 - Type of each value is placed next to the key
+
+### Given more time
+
+I would have liked to incorporate a backend to handle the database for all the changes, add basic testing to test for basic rendering, and open up Figma and try to play around with some design styles for the project.
