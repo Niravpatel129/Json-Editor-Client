@@ -1,25 +1,70 @@
-import useSWR from 'swr';
-import fetcher from '../../Service/fetcher';
-
-const API_URL = '/cannabis/random_cannabis?size=1';
+import { useContext, useState } from 'react';
+import TreeContext from '../../context/TreeContext/TreeContext';
+import EditedTree from '../EditedTree/EditedTree';
+import './NodeTree.scss';
 
 const NodeTree = () => {
-  const { data, error } = useSWR(API_URL, fetcher);
-  // console.log(data, error);
+  const [open, setOpen] = useState(false);
+  const [editedKeys, setEditedKeys] = useState({});
+  const [editable, setEditable] = useState();
+  const { json, error } = useContext(TreeContext);
 
-  const renderJson = () => {
-    if (!data) return;
+  const renderChild = (parent) => {
+    if (!json) return;
 
-    return Object.entries(data[0]).map(([key, value], index) => {
+    return Object.entries(parent).map(([key, value], index) => {
+      if (typeof value === 'object') {
+        return (
+          <div key={index}>
+            {/* <b className="key">{key}</b>: */}
+            {editable?.[key] ? (
+              <input
+                className="key input"
+                defaultValue={key}
+                onChange={(e) => setEditedKeys({ ...editedKeys, [key]: e.target.value })}
+                onBlur={() => setEditable({ [key]: false })}
+              ></input>
+            ) : (
+              <b onClick={() => setEditable({ [key]: true })} className="key">
+                {key}
+              </b>
+            )}
+            <div style={{ marginLeft: '30px' }}>{renderChild(value)}</div>
+          </div>
+        );
+      }
+
       return (
-        <h1 key={index}>
-          {key}: {value}
-        </h1>
+        <div className="keyPair" key={index}>
+          {editable?.[key] ? (
+            <input
+              className="key input"
+              defaultValue={key}
+              onChange={(e) => setEditedKeys({ ...editedKeys, [key]: e.target.value })}
+              onBlur={() => setEditable({ [key]: false })}
+            ></input>
+          ) : (
+            <b onClick={() => setEditable({ [key]: true })} className="key">
+              {key}
+            </b>
+          )}
+          <span className="type">({typeof value})</span>: <span>{value}</span>
+        </div>
       );
     });
   };
 
-  return <>{renderJson()}</>;
+  return (
+    <div className="NodeTree">
+      <div className="dropdownArrow" onClick={() => setOpen(!open)}>
+        {open ? '▲' : '▼'}
+      </div>
+      <div className="jsonTree" style={{ height: open ? '18px' : 'auto' }}>
+        {error ? <div className="error">{error}</div> : renderChild(json)}
+      </div>
+      <EditedTree editedKeys={editedKeys} />
+    </div>
+  );
 };
 
 export default NodeTree;

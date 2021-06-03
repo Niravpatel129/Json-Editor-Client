@@ -1,0 +1,36 @@
+.NodeTree {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .dropdownArrow {
+    margin-right: 10px;
+    user-select: none;
+    margin-top: 2px;
+  }
+
+  .jsonTree {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 600px;
+
+    .keyPair {
+      margin: 2px 0;
+    }
+
+    .key {
+      color: blue;
+
+      &.input {
+        width: auto;
+      }
+    }
+
+    .type {
+      color: gray;
+    }
+  }
+}
