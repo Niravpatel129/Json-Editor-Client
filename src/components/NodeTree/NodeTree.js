@@ -16,7 +16,6 @@ const NodeTree = () => {
       if (typeof value === 'object') {
         return (
           <div key={index}>
-            {/* <b className="key">{key}</b>: */}
             {editable?.[key] ? (
               <input
                 className="key input"
