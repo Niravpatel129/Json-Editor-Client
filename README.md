@@ -30,7 +30,7 @@ My approach was to build a recursive render function that would loop through the
 
 - The app renders a json tree recursively, meaning it will work with any nested json object.
 
-- You can click on any the key and chance the value and the app will remember the change on the state.
+- You can click on any the key and change the value and the app will remember the change on the state.
 
 - You can toggle the tree via a basic local state for the component
 
